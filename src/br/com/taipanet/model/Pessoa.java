@@ -1,19 +1,37 @@
 package br.com.taipanet.model;
 
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class Pessoa {
+import br.com.taipanet.util.FormatarData;
+
+@Entity
+public class Pessoa implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue
 	private long id;
+	@Column(nullable=false)
 	private String nomeRazao;
+	@Column(nullable=false)
 	private String cpfCnpj;
 	private SexoEnum sexo;
+	@Embedded
 	private Endereco endereco;
 	private ArrayList<Contato> contatos;
-	private Usuario criador;
-	private Usuario usuarioUltimaAlteracao;
+	//@OneToOne(optional=false, fetch=FetchType.LAZY) @JoinColumn(name="criador_id",nullable=true)
+	//private Usuario criador;
+	//@OneToOne(optional=false, fetch=FetchType.LAZY) @JoinColumn(name="usuario_alteracao_id", nullable=true)
+	//private Usuario usuarioUltimaAlteracao;
+	@Column(nullable=false)
 	private Calendar dataCadastro;
+	@Column(nullable=false)
 	private Calendar dataUltimaAlteracao;
 	
 	public Pessoa() {
@@ -68,7 +86,7 @@ public class Pessoa {
 		this.contatos = contatos;
 	}
 
-	public Usuario getCriador() {
+	/*public Usuario getCriador() {
 		return criador;
 	}
 
@@ -82,10 +100,14 @@ public class Pessoa {
 
 	public void setUsuarioUltimaAlteracao(Usuario usuarioUltimaAlteracao) {
 		this.usuarioUltimaAlteracao = usuarioUltimaAlteracao;
-	}
+	}*/
 
 	public Calendar getDataCadastro() {
 		return dataCadastro;
+	}
+	
+	public String getDataCadastroString() {
+		return new FormatarData().formatarData(dataCadastro);
 	}
 
 	public void setDataCadastro(Calendar dataCadastro) {
@@ -94,6 +116,10 @@ public class Pessoa {
 
 	public Calendar getDataUltimaAlteracao() {
 		return dataUltimaAlteracao;
+	}
+	
+	public String getDataUltimaAlteracaoString(){
+		return new FormatarData().formatarData(dataUltimaAlteracao);
 	}
 
 	public void setDataUltimaAlteracao(Calendar dataUltimaAlteracao) {

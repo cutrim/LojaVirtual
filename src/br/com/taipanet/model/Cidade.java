@@ -1,9 +1,18 @@
 package br.com.taipanet.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Cidade {
+	@GeneratedValue @Id
 	private long id;
+	@Column(nullable=false)
 	private String descricao;
+	@OneToOne
 	private Estado estado;
 	
 	public Cidade() {

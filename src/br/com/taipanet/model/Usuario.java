@@ -1,10 +1,14 @@
 package br.com.taipanet.model;
 
-
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import javax.persistence.Entity;
 
+@Entity
 public class Usuario extends Pessoa{
+	
+	private static final long serialVersionUID = 1L;  
+	
 	private String login;
 	private String senha;
 	private Status status;
@@ -36,7 +40,11 @@ public class Usuario extends Pessoa{
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public String criarHash(String s){
 		try {
 			String resultado = "";

@@ -1,11 +1,24 @@
 package br.com.taipanet.model;
 
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Lancamento {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+@Entity
+public class Lancamento implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue
 	private long id;
+	@OneToOne
 	private Conta conta;
+	@OneToOne
 	private Pessoa pessoa;
 	private String descricao;
 	private Calendar dataBaixa;

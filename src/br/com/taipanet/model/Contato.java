@@ -1,7 +1,12 @@
 package br.com.taipanet.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public abstract class Contato {
+	@Id @GeneratedValue
 	private long id;
 	private String valor;
 	private Pessoa pessoa;

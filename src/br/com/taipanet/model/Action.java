@@ -1,9 +1,13 @@
 package br.com.taipanet.model;
 
-
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Action {
+	@GeneratedValue @Id
 	private long id;
 	private String descricao;
 	private String status;

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Loja - Back-End Comércio eletrônico</title>
+</h:head>
+<h:body>
+	<div id="cabecalho" style="height:100px;">
+	Cabeçalho da página
+	</div>
+	<p:megaMenu orientation="horizontal"  style="margin-top:20px">
+	    <p:submenu label="Cadastros" icon="ui-icon-check">
+	        <p:column>
+	            <p:submenu label="Pessoas">
+	                <p:menuitem value="Clientes" url="listarClientes.jsf" />
+	                <p:menuitem value="Fornecedores" url="#" />
+	                <p:menuitem value="Usuários" url="#" />
+	            </p:submenu>
+	        </p:column>
+	 		<p:column>
+	 			<p:submenu label="Produtos">
+	                <p:menuitem value="Produtos" url="#" />
+	            </p:submenu>
+	 		</p:column>
+	        <p:column>
+	            <p:graphicImage library="imagens" name="iconeCadastros.png" width="200"/>
+	        </p:column>
+	    </p:submenu>
+	 
+	    <p:submenu label="Processos" icon="ui-icon-document">	 
+	        <p:column>
+	            <p:submenu label="Produtos">
+	                <p:menuitem value="Compra" url="#" />
+	                <p:menuitem value="Venda" url="#" />
+	            </p:submenu>
+			</p:column>
+	        <p:column>
+	            <p:graphicImage library="imagens" name="iconeProcessos.png" width="200"/>
+	        </p:column> 
+	    </p:submenu>
+	 
+	    <p:submenu label="Financeiro" icon="ui-icon-pencil">
+	        <p:column>
+	            <p:submenu label="Lançamentos">
+	                <p:menuitem value="Contas a Pagar" url="#" />
+	                <p:menuitem value="Contas a Receber" url="#" />
+	            </p:submenu>
+	        </p:column>
+	        <p:column>
+	        	<p:submenu label="Arrecadação">
+	                <p:menuitem value="Pagamentos" url="#" />
+	                <p:menuitem value="Recebimentos" url="#" />
+	            </p:submenu>	
+	        </p:column>
+	        <p:column>
+	            <p:graphicImage library="imagens" name="iconeFinanceiro.png" width="200"/>
+	        </p:column>
+	    </p:submenu>
+	 
+	    <p:submenu label="Relatórios" icon="ui-icon-contact">
+	        <p:column>
+	            <p:submenu label="Tech.1">
+	                <p:menuitem value="Tech.1.1" url="#" />
+	                <p:menuitem value="Tech.1.2" url="#" />
+	            </p:submenu>
+	            <p:submenu label="Tech.2">
+	                <p:menuitem value="Tech.2.1" url="#" />
+	                <p:menuitem value="Tech.2.2" url="#" />
+	                <p:menuitem value="Tech.2.3" url="#" />
+	            </p:submenu>
+	        </p:column>
+	 
+	        <p:column>
+	            <p:submenu label="Tech.4">
+	                <p:menuitem value="Tech.4.1" url="#" />
+	                <p:menuitem value="Tech.4.2" url="#" />
+	            </p:submenu>
+	        </p:column>
+	        <p:column>
+	            <p:graphicImage name="/demo/images/nature/nature1.jpg" width="200"/>
+	        </p:column>
+	    </p:submenu>
+	    
+	    <p:submenu label="Configuração" icon="ui-icon-contact">
+	        <p:column>
+	            <p:submenu label="Acesso">
+	                <p:menuitem value="Perfis" url="#" />
+	                <p:menuitem value="Actions" url="#" />
+	            </p:submenu>
+	        </p:column>
+	        <p:column>
+	        	 <p:submenu label="Integração">
+	                <p:menuitem value="WebService" url="#" />
+	                <p:menuitem value="Email" url="#" />
+	            </p:submenu>
+	        </p:column>
+	 		<p:column>
+	            <p:graphicImage library="imagens" name="iconeParametros.png" width="200"/>
+	        </p:column>	        
+	    </p:submenu>
+	 
+	    <p:menuitem value="Sair" url="http://www.primefaces.org" icon="ui-icon-close" />
+	</p:megaMenu>
+	
+	<ui:insert name="conteudo">
+		Epaço utilizado para a apresentação do conteúdo.
+	</ui:insert>
+	<div id="rodape">
+		<p style="text-align: center;">© TaipaNet - Todos os direitos reservados</p>
+	</div>
+</h:body>
+</html>

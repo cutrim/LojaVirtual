@@ -2,8 +2,12 @@ package br.com.taipanet.model;
 
 
 import java.util.Calendar;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
 public class ItemProduto {
+	@Id @GeneratedValue
 	private long id;
 	private String codigoSerie;
 	private Calendar dataCadastro;

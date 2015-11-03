@@ -1,8 +1,13 @@
 package br.com.taipanet.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Estado {
@@ -10,6 +15,8 @@ public class Estado {
 	private long id;
 	private String descricao;
 	private String uf;
+	@OneToMany(fetch=FetchType.EAGER) @JoinColumn(name="estado_id")
+	private List<Cidade> cidades;
 	
 	public Estado() {
 		// TODO Auto-generated constructor stub
@@ -38,4 +45,13 @@ public class Estado {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+	
 }

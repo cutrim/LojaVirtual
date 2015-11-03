@@ -1,10 +1,15 @@
 package br.com.taipanet.model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.OneToOne;
 
+@Embeddable
 public class Endereco {
 	private String cep;
+	@OneToOne
 	private Cidade cidade;
 	private String numero;
+	@OneToOne
 	private TipoLogradouro tipoLogradouro;
 	private String logradouro;
 	private String bloco;
@@ -14,8 +19,6 @@ public class Endereco {
 	private String andar;
 	private String complemento;
 	private String bairro;
-	private int prioridade;
-	private Pessoa contribuinte;
 	
 	public Endereco() {
 		// TODO Auto-generated constructor stub
@@ -116,22 +119,5 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-
-	public int getPrioridade() {
-		return prioridade;
-	}
-
-	public void setPrioridade(int prioridade) {
-		this.prioridade = prioridade;
-	}
-
-	public Pessoa getContribuinte() {
-		return contribuinte;
-	}
-
-	public void setContribuinte(Pessoa contribuinte) {
-		this.contribuinte = contribuinte;
-	}
-
 	
 }

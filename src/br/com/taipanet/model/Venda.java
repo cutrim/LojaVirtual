@@ -4,7 +4,12 @@ package br.com.taipanet.model;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
 public class Venda {
+	@Id @GeneratedValue
 	private long id;
 	private Calendar data;
 	private ArrayList<Produto> produtos;

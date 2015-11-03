@@ -1,7 +1,18 @@
 package br.com.taipanet.model;
 
+import java.io.Serializable;
 
-public class Conta {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity 
+public class Conta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue
 	private long id;
 	private String descricao;
 	private TipoContaEnum tipoConta;
