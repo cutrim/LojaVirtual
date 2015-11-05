@@ -48,7 +48,19 @@ public class LoginBean {
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 			fc.addMessage(null, fm);
 			return "/index";
-			}
+			}		
+	}
+	
+	public String logout(){
+		try{
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc. getExternalContext();
+		HttpSession session = (HttpSession) ec.getSession(false);
+		session.setAttribute("usuario", null);
+		} catch (Exception e){
+			System.out.println("Não foi possível limpar o usuário.");
+		}
+		return "/home";
 		
 	}
 	

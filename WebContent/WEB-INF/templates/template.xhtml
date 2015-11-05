@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<div id="cabecalho" style="height:100px;">
-	Cabeçalho da página
+		<p:graphicImage library="imagens" name="logo.png" height="110"/>
 	</div>
 	<p:megaMenu orientation="horizontal"  style="margin-top:20px">
 	    <p:submenu label="Cadastros" icon="ui-icon-check">
@@ -103,7 +103,7 @@
 	        </p:column>	        
 	    </p:submenu>
 	 
-	    <p:menuitem value="Sair" url="http://www.primefaces.org" icon="ui-icon-close" />
+	    <p:menuitem value="Sair" action="#{loginBean.logout}" url=""  icon="ui-icon-close" />
 	</p:megaMenu>
 	
 	<ui:insert name="conteudo">

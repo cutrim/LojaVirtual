@@ -11,15 +11,16 @@ import org.hibernate.Criteria;
 
 
 public class DaoRepository {
+	private static Session sess;
 	
 	public DaoRepository() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void adiciona(Object object){
-		this.getManager().getTransaction().begin();
-		this.getManager().persist(object);
-		this.getManager().getTransaction().commit();
+		DaoRepository.getSess().getTransaction().begin();
+		DaoRepository.getSess().persist(object);
+		DaoRepository.getSess().getTransaction().commit();
 		System.out.println("Objeto gravado com sucesso: " + object.getClass().getCanonicalName());
 	}
 	
@@ -29,14 +30,21 @@ public class DaoRepository {
 	
 	@SuppressWarnings("rawtypes")
 	public List listar(Class classe){
-		Session sess = (Session) this.getManager().getDelegate();
-		Criteria criteria = sess.createCriteria(classe);
+		Criteria criteria = DaoRepository.getSess().createCriteria(classe);
 		return criteria.list();
 	}
 
 	public EntityManager getManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("LojaVirtual");
 		return factory.createEntityManager();
+	}
+
+	public static Session getSess() {
+		return sess;
+	}
+
+	public static void setSess(Session sess) {
+		DaoRepository.sess = sess;
 	}
 	
 }
