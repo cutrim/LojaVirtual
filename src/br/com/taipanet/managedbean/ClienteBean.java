@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import br.com.taipanet.model.Cliente;
+import br.com.taipanet.model.Contato;
 import br.com.taipanet.model.Endereco;
 import br.com.taipanet.model.SexoEnum;
 import br.com.taipanet.repository.DaoRepository;
@@ -14,7 +15,7 @@ import br.com.taipanet.repository.DaoRepository;
 @ManagedBean
 public class ClienteBean extends PessoaBean{
 	Cliente cliente = new Cliente();
-	Endereco endereco = new Endereco();
+	String message = "";
 	
 	public ClienteBean() {
 		// TODO Auto-generated constructor stub
@@ -27,27 +28,23 @@ public class ClienteBean extends PessoaBean{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
-	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
 
 	public String cadastrar(){
-		this.cliente.setSexo(SexoEnum.M);
 		this.cliente.setDataCadastro(Calendar.getInstance());
 		this.cliente.setDataUltimaAlteracao(Calendar.getInstance());
-		Endereco endereco = new Endereco();
-		endereco.setLogradouro("Rua x");
-		this.cliente.setEndereco(endereco);
+		this.cliente.setEndereco(this.getEndereco());
+		this.cliente.setContatos(this.getContatos());
+		for (Contato contato : this.getContatos()) {
+			new DaoRepository().adiciona(contato);
+		}
 		new DaoRepository().adiciona(this.cliente);
-		FacesMessage mensagem = new FacesMessage ("Cliente cadastrado com sucesso!");
-		mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
+		
+		this.setContatos(null);
+		this.setEndereco(null);
+		this.cliente=null;
+		
+		FacesContext context = FacesContext.getCurrentInstance();        
+        context.addMessage(null, new FacesMessage("Sucesso",  "Cliente cadastrado com sucesso: " + message) );        
 		return "/listarClientes";
 	}
 }

@@ -6,40 +6,31 @@ xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="conteudo">
 		<h:form>
-		    <p:dataTable style="margin-top: 20px;" var="cliente" value="#{pessoaBean.pessoas}" rows="10" 
+		    <p:dataTable style="margin-top: 20px;" var="fornecedor" value="#{fornecedorBean.pessoas}" rows="10" 
 		                         paginator="true"
 		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		                         rowsPerPageTemplate="5,10,15">
-		        <f:facet name="header">Clientes</f:facet>
-		        <p:column headerText="Id">
-		            <h:outputText value="#{cliente.id}" />
-		        </p:column>
-		 
+		                         rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum fornecedor cadastrado">
+		        <f:facet name="header">Fornecedores</f:facet>
+		        		 
 		        <p:column headerText="Nome">
-		            <h:outputText value="#{cliente.nomeRazao}" />
+		            <h:outputText value="#{fornecedor.nomeRazao}" />
 		        </p:column>
 		        <p:column headerText="CPF">
-		            <h:outputText value="#{cliente.cpfCnpj}" />
-		        </p:column>
-		        
-		        <p:column headerText="Sexo">
-		            <h:outputText value="#{cliente.sexo.valor}" />
+		            <h:outputText value="#{fornecedor.cpfCnpj}" />
 		        </p:column>
 		        
 		        <p:column headerText="Cadastrado em">
-		            <h:outputText value="#{cliente.dataCadastroString}"/>
+		            <h:outputText value="#{fornecedor.dataCadastroString}"/>
 		        </p:column>
 		        
 		        <p:column headerText="Atualizado em">
-		            <h:outputText value="#{cliente.dataUltimaAlteracaoString}" />
+		            <h:outputText value="#{fornecedor.dataUltimaAlteracaoString}" />
 		        </p:column>
 		 
 		        
 		    </p:dataTable>
-		    <h:commandButton value="Novo" action="formClientes" />
-		</h:form>
-		
-		
+		    <h:commandButton value="Novo" action="formFornecedores" />
+		</h:form>		
 		
 	</ui:define>
 	</ui:composition>

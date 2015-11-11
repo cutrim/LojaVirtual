@@ -1,15 +1,23 @@
 package br.com.taipanet.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public abstract class Contato {
+public class Contato implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private long id;
+	@OneToOne
+	private TipoContato tipo;
 	private String valor;
-	private Pessoa pessoa;
 	
 	public Contato() {
 		// TODO Auto-generated constructor stub
@@ -31,12 +39,11 @@ public abstract class Contato {
 		this.valor = valor;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public TipoContato getTipo() {
+		return tipo;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-	
+	public void setTipo(TipoContato tipo) {
+		this.tipo = tipo;
+	}	
 }

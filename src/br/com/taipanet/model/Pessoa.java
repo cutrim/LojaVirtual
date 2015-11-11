@@ -1,13 +1,15 @@
 package br.com.taipanet.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import br.com.taipanet.util.FormatarData;
 
@@ -24,7 +26,8 @@ public class Pessoa implements Serializable{
 	private SexoEnum sexo;
 	@Embedded
 	private Endereco endereco;
-	private ArrayList<Contato> contatos;
+	@OneToMany
+	private List<Contato> contatos;
 	//@OneToOne(optional=false, fetch=FetchType.LAZY) @JoinColumn(name="criador_id",nullable=true)
 	//private Usuario criador;
 	//@OneToOne(optional=false, fetch=FetchType.LAZY) @JoinColumn(name="usuario_alteracao_id", nullable=true)
@@ -78,11 +81,11 @@ public class Pessoa implements Serializable{
 		this.endereco = endereco;
 	}
 
-	public ArrayList<Contato> getContatos() {
+	public List<Contato> getContatos() {
 		return contatos;
 	}
 
-	public void setContatos(ArrayList<Contato> contatos) {
+	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
 	}
 

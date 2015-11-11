@@ -13,7 +13,7 @@ public class SexoBean {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<SexoEnum> listar(){
+	public List<SexoEnum> getSexos(){
 		List<SexoEnum> lista = new ArrayList<SexoEnum>();
 		lista.add(SexoEnum.M);
 		lista.add(SexoEnum.F);
