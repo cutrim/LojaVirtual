@@ -46,6 +46,6 @@ public class ClienteBean extends PessoaBean implements Serializable{
 		
 		//FacesContext context = FacesContext.getCurrentInstance();        
         //context.addMessage(null, new FacesMessage("Sucesso",  "Cliente cadastrado com sucesso: " + message) );        
-		return "/listarClientes";
+		return "listarClientes.jsf";
 	}
 }
