@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import br.com.taipanet.util.FormatarData;
 @Entity
 public class Lancamento implements Serializable{
 	/**
@@ -67,6 +69,9 @@ public class Lancamento implements Serializable{
 	public Calendar getDataBaixa() {
 		return dataBaixa;
 	}
+	public String getDataBaixaString(){
+		return new FormatarData().formatarData(this.getDataBaixa());
+	}
 
 	public void setDataBaixa(Calendar dataBaixa) {
 		this.dataBaixa = dataBaixa;
@@ -74,6 +79,9 @@ public class Lancamento implements Serializable{
 
 	public Calendar getDataLancamento() {
 		return dataLancamento;
+	}
+	public String getDataLancamentoString(){
+		return new FormatarData().formatarData(this.getDataLancamento());
 	}
 
 	public void setDataLancamento(Calendar dataLancamento) {
@@ -99,10 +107,13 @@ public class Lancamento implements Serializable{
 	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
+	public String getDataCadastroString(){
+		return new FormatarData().formatarData(this.getDataCadastro());
+	}
 
 	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
-	}
+	}	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

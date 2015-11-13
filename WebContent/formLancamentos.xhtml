@@ -14,34 +14,37 @@ xmlns="http://www.w3.org/1999/xhtml"
 		        <p:tab title="Cliente/Fornecedor">
 		            <h:panelGrid columns="2" cellpadding="10">
 		                <h:outputLabel value="Pessoa" for="pessoa" />
-		   				<p:selectOneMenu value="#{lancamentosBean.pessoa}" title="Seleciona a pessoa de lançamento">
+		   				<p:selectOneMenu id="pessoa" value="#{lancamentosBean.pessoa}" title="Seleciona a pessoa de lançamento">
 		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um cliente" itemValue=""></f:selectItem>
 		   					<f:selectItems value="#{pessoaBean.pessoas}" var="pessoa" itemLabel="#{pessoa.nomeRazao}" itemValue="#{pessoa}"></f:selectItems>
 		   				</p:selectOneMenu>
 		   				
+		   				<h:outputLabel value="Descrição" for="descricao" />
+		   				<p:inputText id="descricao" value="#{lancamentosBean.lancamento.descricao}" placeholder="Descrição do lançamento" required="true" requiredMessage="Descrição obrigatória"/>
+		   				
 		   				<h:outputLabel value="Valor" for="valor" />
-		   				<p:inputText id="nome" value="#{lancamentosBean.lancamento.valorLançado}" placeholder="Valor lançado" required="true" requiredMessage="Valor lançado obrigatório"/>
+		   				<p:inputText id="valor" value="#{lancamentosBean.lancamento.valorLançado}" placeholder="Valor lançado" required="true" requiredMessage="Valor lançado obrigatório"/>
 		   				
 		   				<h:outputLabel value="Plano de Conta" for="plano" />
-		   				<p:selectOneMenu value="#{lancamentosBean.lancamento.conta}" id="conta" required="true" requiredMessage="Por favor, informe a conta">
+		   				<p:selectOneMenu value="#{lancamentosBean.conta}" id="plano" required="true" requiredMessage="Por favor, informe a conta">
 		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione uma conta" itemValue=""></f:selectItem>
-		   					<f:selectItems value="#{contaBean.contas}" var="conta" itemLabel="#{conta.descricao}" itemValue="conta"></f:selectItems>
+		   					<f:selectItems value="#{contaBean.contas}" var="conta" itemLabel="#{conta.descricao}" itemValue="#{conta}"></f:selectItems>
 		   				</p:selectOneMenu>
 		   				
 		   				<h:outputLabel value="Data de lançamento" for="dataLancamento" />
-		   				<p:calendar value="#{lancamentosBean.lancamento.dataLancamento}">
+		   				<p:calendar id="dataLancamento" value="#{lancamentosBean.dataLancamento}">
 		   					<f:convertDateTime pattern="dd/MM/yyyy"/>
 		   				</p:calendar>
 		   				
 		   				<h:outputLabel value="Data de Baixa" for="dataBaixa" />
-		   				<p:calendar value="#{lancamentosBean.lancamento.dataBaixa}">
+		   				<p:calendar id="dataBaixa" value="#{lancamentosBean.dataBaixa}">
 		   					<f:convertDateTime pattern="dd/MM/yyyy"/>
 		   				</p:calendar>
 		   				
 		   				<h:outputLabel value="Status do Lançamento" for="statusLancamento" />
-		   				<p:selectOneMenu value="#{lancamentosBean.lancamento.status}" id="statusLancamento" required="true" requiredMessage="Por favor, informe o status do lançamento">
+		   				<p:selectOneMenu id="statusLancamento" value="#{lancamentosBean.status}" required="true" requiredMessage="Por favor, informe o status do lançamento">
 		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um status" itemValue=""></f:selectItem>
-		   					<f:selectItems value="#{statusLancamentoBean.statusLancamentos}" var="status" itemLabel="#{status.descricao}" itemValue="status"></f:selectItems>
+		   					<f:selectItems value="#{statusLancamentoBean.statusLancamentos}" var="status" itemLabel="#{status.descricao}" itemValue="#{status}"></f:selectItems>
 		   				</p:selectOneMenu>
 		   				
 		            </h:panelGrid>
@@ -50,7 +53,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 		    </p:accordionPanel>
 		    
 		    
-		    <p:commandButton value="Cadastrar" actionListener="#{clienteBean.cadastrar}" update="growl" />
+		    <p:commandButton value="Cadastrar" actionListener="#{lancamentosBean.cadastrar}" update="growl" />
 		</h:form>
 		<p:dialog header="Inserção de contatos" widgetVar="dlgContato" modal="true" height="300" width="500">  			
     				

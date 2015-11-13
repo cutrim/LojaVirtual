@@ -156,6 +156,6 @@ public class Pessoa implements Serializable{
 	
     @Override
     public String toString() {
-        return "Classe [id=" + id + ", nome=" + nomeRazao + "]";
+        return "Classe [id=" + id + ", nome=" + nomeRazao + ", cpfCnpj=" + cpfCnpj + "]";
     }
 }

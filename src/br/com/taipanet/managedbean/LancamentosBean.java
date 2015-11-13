@@ -9,8 +9,10 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.taipanet.model.Conta;
 import br.com.taipanet.model.Lancamento;
 import br.com.taipanet.model.Pessoa;
+import br.com.taipanet.model.StatusLancamento;
 import br.com.taipanet.repository.DaoRepository;
 
 @ManagedBean
@@ -19,6 +21,8 @@ public class LancamentosBean implements Serializable{
 	private Date dataLancamento;
 	private Date dataBaixa;
 	private Pessoa pessoa = new Pessoa();
+	private Conta conta = new Conta();
+	private StatusLancamento status = new StatusLancamento();
 	/**
 	 * 
 	 */
@@ -38,6 +42,9 @@ public class LancamentosBean implements Serializable{
 		cal=format.getCalendar();
 		this.lancamento.setDataLancamento(cal);
 		this.lancamento.setDataCadastro(Calendar.getInstance());
+		this.lancamento.setConta(conta);
+		this.lancamento.setPessoa(pessoa);
+		this.lancamento.setStatus(status);
 		new DaoRepository().adiciona(this.lancamento);
 		this.lancamento = new Lancamento();
 		this.pessoa = new Pessoa();
@@ -86,6 +93,21 @@ public class LancamentosBean implements Serializable{
 	public void setDataBaixa(Date dataBaixa) {
 		this.dataBaixa = dataBaixa;
 	}
-	
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+	public StatusLancamento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusLancamento status) {
+		this.status = status;
+	}
 	
 }

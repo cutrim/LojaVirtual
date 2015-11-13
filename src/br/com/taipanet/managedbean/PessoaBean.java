@@ -3,12 +3,8 @@ package br.com.taipanet.managedbean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-
 import br.com.taipanet.model.Contato;
 import br.com.taipanet.model.Endereco;
 import br.com.taipanet.model.Pessoa;
@@ -81,8 +77,6 @@ public class PessoaBean implements Serializable{
 	public String cadastrar(Pessoa pessoa) {
 		// TODO Auto-generated method stub
 		new DaoRepository().adiciona(pessoa);
-		FacesMessage mensagem = new FacesMessage(pessoa.getClass().getCanonicalName() + " cadastrado(a) com sucesso.");
-		FacesContext.getCurrentInstance().addMessage(null, mensagem);
 		return "/listar" + pessoa.getClass().getCanonicalName() + "s.jsf";
 	}
 	
