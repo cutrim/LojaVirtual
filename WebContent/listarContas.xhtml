@@ -1,0 +1,41 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<h:form>
+		    <p:dataTable style="margin-top: 20px;" var="conta" value="#{contaBean.contas}" rows="10" emptyMessage="Nenhuma conta cadastrada"
+		                         paginator="true"
+		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                         rowsPerPageTemplate="5,10,15">
+		        <f:facet name="header">Contas</f:facet>
+		        <p:column headerText="Id">
+		            <h:outputText value="#{conta.id}" />
+		        </p:column>
+		 
+		        <p:column headerText="Descrição">
+		            <h:outputText value="#{conta.descricao}" />
+		        </p:column>
+		        <p:column headerText="Tipo">
+		            <h:outputText value="#{conta.tipoConta.valor}" />
+		        </p:column>
+		        
+		        <p:column headerText="Opções">
+		            <p:graphicImage library="imagens" name="iconeEditar.png" width="30" style="margin-right: 5px;"/>
+		            <p:graphicImage library="imagens" name="iconeExcluir.png" width="30" style="margin-right: 5px;"/>
+		            <p:graphicImage library="imagens" name="iconeVisualizar.png" width="30" style="margin-right: 5px;"/>
+		        </p:column>	 
+		        
+		    </p:dataTable>
+		    <div  style="margin: auto; display: table;">
+				<p:commandButton value="Novo" action="formContas"/>
+			</div>
+		    
+		</h:form>
+		
+		
+		
+	</ui:define>
+	</ui:composition>

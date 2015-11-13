@@ -1,0 +1,45 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<h:form>
+		    <p:dataTable style="margin-top: 20px;" var="lancamento" value="#{lancamentosBean.lancamentos}" rows="10" emptyMessage="Nenhum lançamento cadastrado"
+		                         paginator="true"
+		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                         rowsPerPageTemplate="5,10,15">
+		        <f:facet name="header">Lançamentos</f:facet>
+		        <p:column headerText="Código">
+		            <h:outputText value="#{lancamento.id}" />
+		        </p:column>
+		 
+		        <p:column headerText="Nome">
+		            <h:outputText value="#{lancamento.pessoa.nome}" />
+		        </p:column>
+		        <p:column headerText="Lançamento">
+		            <h:outputText value="#{lancamento.dataLancamento}" />
+		        </p:column>
+		        
+		        <p:column headerText="Descrição">
+		            <h:outputText value="#{lancamento.descricao}" />
+		        </p:column>
+		        
+		        <p:column headerText="Valor">
+		            <h:outputText value="#{lancamento.valorLancado}"/>
+		        </p:column>
+		        
+		        <p:column headerText="Classificação">
+		            <h:outputText value="#{lancamento.conta.descricao}" />
+		        </p:column>
+		 
+		        
+		    </p:dataTable>
+		    <p:commandButton value="Novo" action="formLancamentos" />
+		</h:form>
+		
+		
+		
+	</ui:define>
+	</ui:composition>

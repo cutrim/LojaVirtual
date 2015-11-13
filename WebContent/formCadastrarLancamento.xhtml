@@ -1,0 +1,109 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+		    <p:accordionPanel>
+		        <p:tab title="Dados Pessoais">
+		            <h:panelGrid columns="2" cellpadding="10">
+		                <h:outputLabel value="CPF" for="cpf" />
+		   				<p:inputMask mask="999.999.999-99" id="cpf" value="#{clienteBean.cliente.cpfCnpj}" placeholder="999.999.999-99" required="true" requiredMessage="CPF obrigatório"></p:inputMask>
+		   				
+		   				<h:outputLabel value="Nome" for="nome" />
+		   				<p:inputText id="nome" value="#{clienteBean.cliente.nomeRazao}" placeholder="Nome do cliente" required="true" requiredMessage="Nome obrigatório"/>
+		   				
+		   				<h:outputLabel value="Sexo" for="sexo" />
+		   				<p:selectOneMenu value="#{clienteBean.cliente.sexo}" id="sexo" required="true" requiredMessage="Sexo obrigatório">
+		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um sexo" itemValue=""></f:selectItem>
+		   					<f:selectItems value="#{sexoBean.sexos}" var="sexo" itemLabel="#{sexo.valor}" itemValue="#{sexo}"></f:selectItems>
+		   				</p:selectOneMenu>
+		   				
+		            </h:panelGrid>
+		        </p:tab>
+		        <p:tab title="Endereço">
+		            <h:panelGrid columns="2" cellpadding="10">
+		                <h:outputLabel value="Tipo Logradouro" for="logradouro" />
+		                <p:selectOneMenu value="#{clienteBean.endereco.tipoLogradouro}">
+		                	<f:selectItem itemValue="null" itemLabel="Selecione"/>
+		                	<f:selectItems value="#{clienteBean.tiposEndereco}" var="tipo" itemLabel="#{tipo.descricao}" itemValue="#{tipo}"/>
+		                </p:selectOneMenu>
+		   				
+		   				<h:outputLabel value="Logradouro" for="logradouro" />
+		   				<p:inputText id="logradouro" value="#{clienteBean.endereco.logradouro}" placeholder="Nome do logradouro"/>
+		   				
+		   				<h:outputLabel value="Bairro" for="bairro" />
+		   				<p:inputText id="bairro" value="#{clienteBean.endereco.bairro}" placeholder="Nome do Bairro"/>
+		   				
+		   				<h:outputLabel value="CEP" for="cep" />
+		   				<p:inputMask id="cep" value="#{clienteBean.endereco.cep}" placeholder="99.999-999" mask="99.999-999"/>
+		   				
+		   				<h:outputLabel value="Complemento" for="complemento" />
+		   				<p:inputText id="complemento" value="#{clienteBean.endereco.complemento}" />
+		   				
+		   				<h:outputLabel value="Sala" for="sala" />
+		   				<p:inputText id="sala" value="#{clienteBean.endereco.sala}" />
+		   				
+		   				<h:outputLabel value="Andar" for="andar" />
+		   				<p:inputText id="andar" value="#{clienteBean.endereco.andar}" />
+		   				
+		   				<h:outputLabel value="Casa" for="casa" />
+		   				<p:inputText id="casa" value="#{clienteBean.endereco.casa}" />
+		   				
+		   				<h:outputLabel value="Apartamento" for="apartamento" />
+		   				<p:inputText id="apartamento" value="#{clienteBean.endereco.apartamento}" />
+		   				
+		            </h:panelGrid>
+		        </p:tab>
+		        <p:tab title="Contatos" id="contatosPanel">
+			   			<h:panelGrid columns="1" cellpadding="10" id="contatosGrid">		
+			   				
+			   				
+							 <p:commandButton value="Adicinar Contato" type="button" onclick="PF('dlgContato').show();" /> 									   				
+			            </h:panelGrid>
+		        </p:tab>
+		       
+		    </p:accordionPanel>
+		    
+		    
+		    <p:commandButton value="Cadastrar" actionListener="#{clienteBean.cadastrar}" update="growl" />
+		</h:form>
+		<p:dialog header="Inserção de contatos" widgetVar="dlgContato" modal="true" height="300" width="500">  			
+    				
+   					<p:tab>
+	    				<p:panelGrid columns="2">
+	    				<h:form>
+	    					<p:growl id="mensagemContato"/>
+	    					<h:outputLabel value="Tipo Contato" for="tipoContato"/>
+	    					<p:selectOneMenu id="tipoContato" value="#{clienteBean.contato.tipo}" required="true" requiredMessage="Tipo de contato obrigatório">
+	    						<f:selectItem itemValue="null" itemLabel="Selecione"/>
+	    						<f:selectItems value="#{clienteBean.tiposContato}" var="tipo" itemValue="#{tipo}" itemLabel="#{tipo.descricao}"/>
+	    					</p:selectOneMenu>
+	    					
+	    					<h:outputLabel value="Contato" for="contato"/>
+	    					<p:inputText value="#{clienteBean.contato.valor}" required="true" requiredMessage="Contato obrigatório"/>
+	    					
+	    					<p:dataTable id="tabelaContatos" var="contato" value="#{clienteBean.contatos}" emptyMessage="Nenhum contato adicionado">
+				   					<f:facet name="header">Contatos</f:facet>
+								 
+								    <p:column headerText="Tipo">
+								        <h:outputText value="#{contato.tipo.descricao}" />
+								    </p:column>
+								 
+								    <p:column headerText="Valor">
+								        <h:outputText value="#{contato.valor}" />
+								    </p:column>
+								</p:dataTable>
+	    					
+	    					<p:commandButton value="Adicionar Contato" update="mensagemContato tabelaContatos" render="tabelaContatos"  action="#{clienteBean.adicionarContato}" />
+	    					</h:form>
+	    				</p:panelGrid>
+   					</p:tab>
+   				
+		</p:dialog> 
+		
+	</ui:define>
+	</ui:composition>
