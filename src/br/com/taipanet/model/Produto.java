@@ -1,15 +1,11 @@
 package br.com.taipanet.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
-import br.com.taipanet.util.FormatarData;
 
 @Entity
 public class Produto implements Serializable{
@@ -23,10 +19,6 @@ public class Produto implements Serializable{
 	private String descricao;
 	private String imagem;
 	private Double valor;
-	@Column(nullable=false)
-	private Calendar dataCadastro;
-	@Column(nullable=false)
-	private Calendar dataUltimaAlteracao;
 	@Transient
 	private int estoque;
 	
@@ -81,31 +73,5 @@ public class Produto implements Serializable{
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
-
-	public Calendar getDataCadastro() {
-		return dataCadastro;
-	}
-	
-	public String getDataCadastroString() {
-		return new FormatarData().formatarData(dataCadastro);
-	}
-
-	public void setDataCadastro(Calendar dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public Calendar getDataUltimaAlteracao() {
-		return dataUltimaAlteracao;
-	}
-	
-	public String getDataUltimaAlteracaoString(){
-		return new FormatarData().formatarData(dataUltimaAlteracao);
-	}
-
-	public void setDataUltimaAlteracao(Calendar dataUltimaAlteracao) {
-		this.dataUltimaAlteracao = dataUltimaAlteracao;
-	}
-	
-	
 	
 }

@@ -4,15 +4,14 @@ xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
 	<ui:define name="conteudo">
 		<h:form>
-		    <p:dataTable style="margin-top: 20px;" var="produto" value="#{produtoBean.produtos}" rows="10" 
+		    <p:dataTable style="margin-top: 20px;" var="produto" value="#{produtoBean.produtos}" rows="10"  emptyMessage="Nenhum produto cadastrado"
 		                         paginator="true"
 		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		                         rowsPerPageTemplate="5,10,15">
-		        <f:facet name="header">Lista de Produtos</f:facet>
-		        		 
+		        <f:facet name="header">Produtos</f:facet>
+		 
 		        <p:column headerText="Código">
 		            <h:outputText value="#{produto.codigo}" />
 		        </p:column>
@@ -24,18 +23,8 @@ xmlns="http://www.w3.org/1999/xhtml"
 		            <h:outputText value="#{produto.valor}" />
 		        </p:column>
 		        
-		        <p:column headerText="Cadastrado em">
-		            <h:outputText value="#{produto.dataCadastroString}"/>
-		        </p:column>
-		        
-		        <p:column headerText="Atualizado em">
-		            <h:outputText value="#{produto.dataUltimaAlteracaoString}" />
-		        </p:column>
-		        		        
 		    </p:dataTable>
-		    
-		    <p:commandButton value="Novo Produto" action="formProdutos" />
-		    
+		    <p:commandButton value="Novo" action="formProdutos" />
 		</h:form>
 		
 		
