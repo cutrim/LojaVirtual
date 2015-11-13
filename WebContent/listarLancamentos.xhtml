@@ -26,8 +26,10 @@ xmlns="http://www.w3.org/1999/xhtml"
 		            <h:outputText value="#{lancamento.descricao}" />
 		        </p:column>
 		        
-		        <p:column headerText="Valor">
-		            <h:outputText value="#{lancamento.valorLancado}"/>
+		        <p:column headerText="Valor" style="text-align: right;">
+		            <h:outputText value="#{lancamento.valorLancado}">
+		            	<f:convertNumber locale="pt_BR" type="currency" />
+		            </h:outputText>
 		        </p:column>
 		        
 		        <p:column headerText="Classificação">

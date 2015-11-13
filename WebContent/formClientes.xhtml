@@ -84,7 +84,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 	    					</p:selectOneMenu>
 	    					
 	    					<h:outputLabel value="Contato" for="contato"/>
-	    					<p:inputText value="#{clienteBean.contato.valor}" required="true" requiredMessage="Contato obrigatório"/>
+	    					<p:inputText id="contato" value="#{clienteBean.contato.valor}" required="true" requiredMessage="Contato obrigatório"/>
 	    					
 	    					<p:dataTable id="tabelaContatos" var="contato" value="#{clienteBean.contatos}" emptyMessage="Nenhum contato adicionado">
 				   					<f:facet name="header">Contatos</f:facet>
