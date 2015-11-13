@@ -23,7 +23,10 @@ public class Lancamento implements Serializable{
 	private String descricao;
 	private Calendar dataBaixa;
 	private Calendar dataLancamento;
-	private Double valorLançado;
+	private Double valorLancado;
+	private Calendar dataCadastro;
+	@OneToOne
+	private StatusLancamento status;
 	
 	public Lancamento() {
 		// TODO Auto-generated constructor stub
@@ -78,11 +81,39 @@ public class Lancamento implements Serializable{
 	}
 
 	public Double getValorLançado() {
-		return valorLançado;
+		return valorLancado;
 	}
 
 	public void setValorLançado(Double valorLançado) {
-		this.valorLançado = valorLançado;
+		this.valorLancado = valorLançado;
+	}
+
+	public Double getValorLancado() {
+		return valorLancado;
+	}
+
+	public void setValorLancado(Double valorLancado) {
+		this.valorLancado = valorLancado;
+	}
+
+	public Calendar getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Calendar dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public StatusLancamento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusLancamento status) {
+		this.status = status;
 	}
 	
 	

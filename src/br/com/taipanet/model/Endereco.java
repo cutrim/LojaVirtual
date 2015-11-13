@@ -1,10 +1,17 @@
 package br.com.taipanet.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cep;
 	@OneToOne
 	private Cidade cidade;
@@ -118,6 +125,10 @@ public class Endereco {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

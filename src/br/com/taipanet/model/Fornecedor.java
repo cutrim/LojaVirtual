@@ -40,7 +40,6 @@ public class Fornecedor extends Pessoa{
 
 	public void setInstituicaoFinanceira(String instituicaoFinanceira) {
 		this.instituicaoFinanceira = instituicaoFinanceira;
-	}
-	
+	}	
 	
 }
