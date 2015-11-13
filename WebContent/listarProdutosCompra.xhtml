@@ -24,12 +24,8 @@ xmlns="http://www.w3.org/1999/xhtml"
 		            <h:outputText value="#{produto.valor}" />
 		        </p:column>
 		        
-		        <p:column headerText="Cadastrado em">
-		            <h:outputText value="#{produto.dataCadastroString}"/>
-		        </p:column>
-		        
-		        <p:column headerText="Atualizado em">
-		            <h:outputText value="#{produto.dataUltimaAlteracaoString}" />
+		        <p:column headerText="Ações">
+		            <p:commandButton value="Registrar Compra" action="#{compraBean.selecionaProduto(produto)}" />
 		        </p:column>
 		        		        
 		    </p:dataTable>

@@ -2,9 +2,12 @@ package br.com.taipanet.model;
 
 
 import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 @Entity
 public class ItemProduto {
 	@Id @GeneratedValue
@@ -12,8 +15,11 @@ public class ItemProduto {
 	private String codigoSerie;
 	private Calendar dataCadastro;
 	private Calendar dataCompra;
+	@OneToOne
 	private Fornecedor fornecedor;
 	private Double valorCompra;
+	@OneToOne
+	private Produto produto;
 	
 	public ItemProduto() {
 		// TODO Auto-generated constructor stub
@@ -66,5 +72,15 @@ public class ItemProduto {
 	public void setValorCompra(Double valorCompra) {
 		this.valorCompra = valorCompra;
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+	
+	
 	
 }
