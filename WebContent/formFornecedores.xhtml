@@ -5,22 +5,19 @@ xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="conteudo">
+		<div  style="margin: auto; display: table;">
+			<p:graphicImage library="imagens" name="iconeFornecedor.png" width="200"/>
+		</div>
 		<h:form>
 			<p:growl id="growl" showDetail="true" sticky="true" />
 		    <p:accordionPanel>
-		        <p:tab title="Dados Pessoais">
+		        <p:tab title="Dados Principais">
 		            <h:panelGrid columns="2" cellpadding="10">
-		                <h:outputLabel value="CPF" for="cpf" />
-		   				<p:inputMask mask="999.999.999-99" id="cpf" value="#{fornecedorBean.fornecedor.cpfCnpj}" placeholder="999.999.999-99" required="true" requiredMessage="CPF obrigatório"></p:inputMask>
+		                <h:outputLabel value="CNPJ" for="cpf" />
+		   				<p:inputMask mask="99.999.999/9999-99" id="cpf" value="#{fornecedorBean.fornecedor.cpfCnpj}" placeholder="99.999.999/9999-99" required="true" requiredMessage="CNPJ obrigatório"></p:inputMask>
 		   				
 		   				<h:outputLabel value="Nome" for="nome" />
 		   				<p:inputText id="nome" value="#{fornecedorBean.fornecedor.nomeRazao}" placeholder="Nome do fornecedor" required="true" requiredMessage="Nome obrigatório"/>
-		   				
-		   				<h:outputLabel value="Sexo" for="sexo" />
-		   				<p:selectOneMenu value="#{fornecedorBean.fornecedor.sexo}" id="sexo" required="true" requiredMessage="Sexo obrigatório">
-		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um sexo" itemValue=""></f:selectItem>
-		   					<f:selectItems value="#{sexoBean.sexos}" var="sexo" itemLabel="#{sexo.valor}" itemValue="#{sexo}"></f:selectItems>
-		   				</p:selectOneMenu>
 		   				
 		            </h:panelGrid>
 		        </p:tab>

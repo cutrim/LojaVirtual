@@ -1,11 +1,10 @@
 package br.com.taipanet.managedbean;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 import br.com.taipanet.model.Contato;
 import br.com.taipanet.model.Fornecedor;
@@ -13,7 +12,11 @@ import br.com.taipanet.model.Pessoa;
 import br.com.taipanet.repository.DaoRepository;
 
 @ManagedBean
-public class FornecedorBean extends PessoaBean{
+public class FornecedorBean extends PessoaBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Fornecedor fornecedor = new Fornecedor();
 	String message = "";
 	
@@ -52,14 +55,10 @@ public class FornecedorBean extends PessoaBean{
 		for (Contato contato : this.getContatos()) {
 			new DaoRepository().adiciona(contato);
 		}
-		new DaoRepository().adiciona(this.fornecedor);
-		
+		new DaoRepository().adiciona(this.fornecedor);		
 		this.setContatos(null);
 		this.setEndereco(null);
-		this.fornecedor=null;
-		
-		FacesContext context = FacesContext.getCurrentInstance();        
-        context.addMessage(null, new FacesMessage("Sucesso",  "Fornecedor cadastrado com sucesso " + message) );        
-		return "/listarFornecedores";
+		this.fornecedor=null;     
+		return "listarFornecedores";
 	}
 }

@@ -1,19 +1,20 @@
 package br.com.taipanet.managedbean;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 import br.com.taipanet.model.Cliente;
 import br.com.taipanet.model.Contato;
-import br.com.taipanet.model.Endereco;
-import br.com.taipanet.model.SexoEnum;
 import br.com.taipanet.repository.DaoRepository;
 
 @ManagedBean
-public class ClienteBean extends PessoaBean{
+public class ClienteBean extends PessoaBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Cliente cliente = new Cliente();
 	String message = "";
 	
@@ -43,8 +44,8 @@ public class ClienteBean extends PessoaBean{
 		this.setEndereco(null);
 		this.cliente=null;
 		
-		FacesContext context = FacesContext.getCurrentInstance();        
-        context.addMessage(null, new FacesMessage("Sucesso",  "Cliente cadastrado com sucesso: " + message) );        
+		//FacesContext context = FacesContext.getCurrentInstance();        
+        //context.addMessage(null, new FacesMessage("Sucesso",  "Cliente cadastrado com sucesso: " + message) );        
 		return "/listarClientes";
 	}
 }

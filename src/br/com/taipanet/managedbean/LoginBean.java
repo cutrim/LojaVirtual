@@ -1,5 +1,7 @@
 package br.com.taipanet.managedbean;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -11,8 +13,12 @@ import br.com.taipanet.model.Usuario;
 import br.com.taipanet.repository.UsuarioRepository;
 
 @ManagedBean @ViewScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String usuario;
 	private String senha;
 	

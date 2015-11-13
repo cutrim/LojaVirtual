@@ -6,7 +6,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="conteudo">
 		<h:form>
-		    <p:dataTable style="margin-top: 20px;" var="cliente" value="#{pessoaBean.pessoas}" rows="10" 
+		    <p:dataTable style="margin-top: 20px;" var="cliente" value="#{pessoaBean.pessoas}" rows="10" emptyMessage="Nenhum cliente cadastrado"
 		                         paginator="true"
 		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		                         rowsPerPageTemplate="5,10,15">
@@ -36,7 +36,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 		 
 		        
 		    </p:dataTable>
-		    <h:commandButton value="Novo" action="formClientes" />
+		    <p:commandButton value="Novo" action="formClientes" />
 		</h:form>
 		
 		

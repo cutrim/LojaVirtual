@@ -1,5 +1,6 @@
 package br.com.taipanet.managedbean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,11 @@ import br.com.taipanet.model.TipoLogradouro;
 import br.com.taipanet.repository.DaoRepository;
 
 @ManagedBean @ViewScoped
-public class PessoaBean {
+public class PessoaBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	private Contato contato = new Contato();
 	private Endereco endereco = new Endereco();

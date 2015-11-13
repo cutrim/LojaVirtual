@@ -2,6 +2,8 @@ package br.com.taipanet.repository;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,7 +23,9 @@ public class DaoRepository {
 		DaoRepository.getSess().getTransaction().begin();
 		DaoRepository.getSess().persist(object);
 		DaoRepository.getSess().getTransaction().commit();
-		System.out.println("Objeto gravado com sucesso: " + object.getClass().getCanonicalName());
+		FacesContext context = FacesContext.getCurrentInstance();        
+        context.addMessage(null, new FacesMessage("Sucesso", object.getClass().getSimpleName() + " cadastrado com sucesso!") );    
+		System.out.println(object.getClass().getSimpleName() + " cadastrado com sucesso!");
 	}
 	
 	public <T> Object busca(long id, Class<T> classe){
