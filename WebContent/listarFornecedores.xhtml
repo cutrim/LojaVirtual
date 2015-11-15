@@ -27,7 +27,11 @@ xmlns="http://www.w3.org/1999/xhtml"
 		            <h:outputText value="#{fornecedor.dataUltimaAlteracaoString}" />
 		        </p:column>
 		 
-		        
+		        <p:column headerText="Opções">
+		            <p:graphicImage library="imagens" name="iconeEditar.png" width="30" style="margin-right: 5px;"/>
+		            <p:graphicImage library="imagens" name="iconeExcluir.png" width="30" style="margin-right: 5px;"/>
+		            <p:graphicImage library="imagens" name="iconeVisualizar.png" width="30" style="margin-right: 5px;"/>
+		        </p:column>
 		    </p:dataTable>
 		    <p:commandButton value="Novo" action="formFornecedores" />
 		</h:form>		

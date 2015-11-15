@@ -9,6 +9,7 @@
 <title>Loja - Back-End Comércio eletrônico</title>
 </h:head>
 <h:body>
+	<p:messages globalOnly="true"/>
 	<div id="cabecalho" style="height:100px;">
 		<p:graphicImage library="imagens" name="logo.png" height="110"/>
 	</div>
@@ -23,7 +24,7 @@
 	        </p:column>
 	 		<p:column>
 	 			<p:submenu label="Produtos">
-	                <p:menuitem value="Produtos" url="listarProdutos.jsf" />
+	                <p:menuitem value="Produtos" url="listarProdutosCompra.jsf" />
 	            </p:submenu>
 	 		</p:column>
 	        <p:column>
@@ -34,7 +35,7 @@
 	    <p:submenu label="Processos" icon="ui-icon-document">	 
 	        <p:column>
 	            <p:submenu label="Produtos">
-	                <p:menuitem value="Compra" url="listarCompras.jsf" />
+	                <p:menuitem value="Compra" url="listarProdutosCompra.jsf" />
 	                <p:menuitem value="Venda" url="listarVendas.jsf" />
 	            </p:submenu>
 			</p:column>
@@ -64,21 +65,22 @@
 	 
 	    <p:submenu label="Relatórios" icon="ui-icon-contact">
 	        <p:column>
-	            <p:submenu label="Tech.1">
-	                <p:menuitem value="Tech.1.1" url="#" />
-	                <p:menuitem value="Tech.1.2" url="#" />
+	            <p:submenu label="Sintéticos">
+	                <p:menuitem value="Vendas por período" url="#" />
+	                <p:menuitem value="Vendas por usuário" url="#" />
+	                 <p:menuitem value="Vendas por produto" url="#" />
 	            </p:submenu>
-	            <p:submenu label="Tech.2">
-	                <p:menuitem value="Tech.2.1" url="#" />
-	                <p:menuitem value="Tech.2.2" url="#" />
-	                <p:menuitem value="Tech.2.3" url="#" />
+	            <p:submenu label="Analíticos">
+	                 <p:menuitem value="Vendas por período" url="#" />
+	                <p:menuitem value="Vendas por usuário" url="#" />
+	                 <p:menuitem value="Vendas por produto" url="#" />
 	            </p:submenu>
 	        </p:column>
 	 
 	        <p:column>
-	            <p:submenu label="Tech.4">
-	                <p:menuitem value="Tech.4.1" url="#" />
-	                <p:menuitem value="Tech.4.2" url="#" />
+	            <p:submenu label="Gráficos">
+	                <p:menuitem value="Vendas - Comparação Períodos" url="#" />
+	                <p:menuitem value="Compras - Comparação Períodos" url="#" />
 	            </p:submenu>
 	        </p:column>
 	        <p:column>
@@ -117,8 +119,12 @@
 	<ui:insert name="conteudo">
 		Epaço utilizado para a apresentação do conteúdo.
 	</ui:insert>
-	<div id="rodape">
-		<p style="text-align: center;">© TaipaNet - Todos os direitos reservados</p>
+	<div id="rodape" style="width: 100%;">
+		<div style="margin: auto; padding-top: 7px; display: table;">
+	    	<a href="http://www.ingeti.com.br">
+	    		<p:graphicImage library="imagens" name="logoIngeti.png" style="background:white; border:2px solid; border-radius:25px; padding: 6px; width:62px;"/>
+	    	</a>
+	    </div>
 	</div>
 </h:body>
 </html>

@@ -1,6 +1,7 @@
 package br.com.taipanet.filtros;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -76,7 +77,4 @@ public class ControleDeAcesso implements Filter{
 		System.out.println("============= Efetuando conexão com o banco de dados =============");
 		DaoRepository.setSess((Session) new DaoRepository().getManager().getDelegate());
 	}
-	
-	
-
 }

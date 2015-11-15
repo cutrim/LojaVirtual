@@ -1,0 +1,49 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />	
+			
+			<p:panel header="Descrição do Produto">
+				<h:panelGrid columns="2" cellpadding="10">
+					<p:outputLabel value="Código: "/>
+		   			<p:outputLabel value="#{compraBean.produto.codigo}" />
+		   			<p:outputLabel value="Descrição: "/>
+		   			<p:outputLabel value="#{compraBean.produto.descricao}" />
+		   			<p:outputLabel value="Valor: "/>
+		   			<p:outputLabel value="#{compraBean.produto.valor}" >
+		   				<f:convertNumber locale="pt_BR" type="currency" />
+		   			</p:outputLabel>			   				
+				</h:panelGrid>
+			</p:panel>
+		
+		
+			
+			<p:panel header="Registrar Compra">
+				<h:panelGrid columns="2" cellpadding="10">
+					
+					<h:outputLabel value="Fornecedor" for="fornecedor" />
+	   				<p:selectOneMenu value="#{compraBean.itemProduto.fornecedor}" id="fornecedor" required="true" requiredMessage="Fornecedor obrigatório">
+	   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um fornecedor" itemValue=""></f:selectItem>
+	   					<f:selectItems value="#{fornecedorBean.pessoas}" var="fornecedor" itemLabel="#{fornecedor.nomeRazao}" itemValue="#{fornecedor}"></f:selectItems>
+	   				</p:selectOneMenu>
+		   				
+		   			<h:outputLabel value="Valor da compra R$" for="valor" />
+		   			<p:inputText id="valor" value="#{compraBean.itemProduto.valorCompra}" required="true" requiredMessage="Valor da compra é obrigatório"></p:inputText>
+	   				
+	   				<h:outputLabel value="Quantidade" for="quantidade" />
+		   			<p:inputText id="quantidade" value="#{compraBean.quantidade}" required="true" requiredMessage="Quantidade de itens é obrigatório"></p:inputText>
+	   					   						   				
+				</h:panelGrid>
+			</p:panel>
+			<div style="display: table; margin: auto; margin-top: 10px;">
+		   		<p:commandButton value="Cadastrar" action="#{compraBean.cadastrar}" update="growl" />
+		   	</div>
+		</h:form>
+				
+	</ui:define>
+	</ui:composition>

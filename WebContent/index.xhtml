@@ -1,23 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head></h:head>
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Loja - Back-End Comércio eletrônico</title>
+</h:head>
 <h:body>
-	<h:form id="formLogin">
-		<h:messages id="messages" />
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
 		<div style="background-color: #F5F5F5; box-shadow: 5px 5px 5px #888; background-repeat: repeat-x; color: #000; padding: 30px 15px; position: relative; text-align: center; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1); width: 25%; margin: auto; margin-top: 70px; border-radius: 20px;">
 			<p:graphicImage library="imagens" name="logo.png" width="100"/>
 			<h4 style="color: #000; text-align: center; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);">LOJA VIRTUAL</h4>
 			<div>
-			<p:inputText id="nomeUsuario" value="#{loginBean.usuario}" style="width:300px;"/>
+				<p:inputText id="usuario" value="#{loginBean.usuario}" required="true" requiredMessage="Usuário obrigatório" autocomplete="false" placeholder="nome de usuário"/>
 			<p></p>
-			<p:password id="senha" value="#{loginBean.senha}"  style="width:300px;"/>
+				<p:password id="senha" value="#{loginBean.senha}" required="true" requiredMessage="Senha obrigatória" autocomplete="false" placeholder="senha do usuário"/>
 			<p></p>
-			<p:commandButton value="Entrar" action="#{loginBean.autenticar}" style="width:300px;"/>
+			<h:commandButton value="Entrar" action="#{loginBean.autenticar}" style="width:300px;"/>
 			<p style="text-align: right; width: 300px; margin-left: auto; margin-right: auto;">Esqueceu a senha? Recupere aqui.</p>
-			<h4 style="color: #000; text-align: center; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);">Ainda nÃ£o Ã© cadastrado?</h4>
-			<p:commandButton value="Solicitar Cadastro" action="/sair" style="width:300px;"/>
+			<h4 style="color: #000; text-align: center; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);">Ainda não é cadastrado?</h4>
 			</div>		
 		</div>
 	</h:form>

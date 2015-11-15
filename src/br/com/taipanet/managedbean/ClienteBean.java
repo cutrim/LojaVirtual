@@ -30,6 +30,18 @@ public class ClienteBean extends PessoaBean implements Serializable{
 		this.cliente = cliente;
 	}
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public String cadastrar(){
 		this.cliente.setDataCadastro(Calendar.getInstance());
 		this.cliente.setDataUltimaAlteracao(Calendar.getInstance());
@@ -39,13 +51,7 @@ public class ClienteBean extends PessoaBean implements Serializable{
 			new DaoRepository().adiciona(contato);
 		}
 		new DaoRepository().adiciona(this.cliente);
-		
-		this.setContatos(null);
-		this.setEndereco(null);
-		this.cliente=null;
-		
-		//FacesContext context = FacesContext.getCurrentInstance();        
-        //context.addMessage(null, new FacesMessage("Sucesso",  "Cliente cadastrado com sucesso: " + message) );        
+		this.cliente=new Cliente();		
 		return "listarClientes.jsf";
 	}
 }

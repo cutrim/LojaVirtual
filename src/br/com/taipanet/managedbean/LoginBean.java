@@ -1,14 +1,12 @@
 package br.com.taipanet.managedbean;
 
 import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
 import br.com.taipanet.model.Usuario;
 import br.com.taipanet.repository.UsuarioRepository;
 
@@ -42,13 +40,17 @@ public class LoginBean implements Serializable{
 		this.senha = senha;
 	}
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public String autenticar(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if (new UsuarioRepository().autenticar(this.usuario, new Usuario().criarHash(usuario + senha))){
 			ExternalContext ec = fc. getExternalContext();
 			HttpSession session = (HttpSession) ec.getSession(false);
 			session.setAttribute("usuario", this.usuario);
-			return "/home";
+			return "home.jsf";
 		} else {
 			FacesMessage fm = new FacesMessage("Usuário ou senha não encontrados");
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);

@@ -25,7 +25,9 @@ public class DaoRepository {
 		DaoRepository.getSess().getTransaction().commit();
 		FacesContext context = FacesContext.getCurrentInstance();        
         context.addMessage(null, new FacesMessage("Sucesso", object.getClass().getSimpleName() + " cadastrado com sucesso!") );    
-		System.out.println(object.getClass().getSimpleName() + " cadastrado com sucesso!");
+        FacesMessage mensagem = new FacesMessage(object.getClass().getSimpleName() + " cadastrado com sucesso!");
+		FacesContext.getCurrentInstance().addMessage(null, mensagem);
+        System.out.println(object.getClass().getSimpleName() + " cadastrado com sucesso!");		
 	}
 	
 	public <T> Object busca(long id, Class<T> classe){

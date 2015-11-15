@@ -1,0 +1,32 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+		    <p:accordionPanel>
+		        <p:tab title="Dados Pessoais">
+		            <h:panelGrid columns="2" cellpadding="10">
+		                
+		                
+		                <h:outputLabel value="Descrição" for="descricao" />
+		   				<p:inputText id="descricao" value="#{contaBean.conta.descricao}" placeholder="Nome da conta" required="true" requiredMessage="Nome da conta obrigatório"/>		   				
+		   				
+		   				<h:outputLabel value="Tipo de Conta" for="tipoConta" />
+		   				<p:selectOneMenu value="#{contaBean.conta.tipoConta}" id="tipoConta" required="true" requiredMessage="Tipo da Conta obrigatório">
+		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um tipo de conta" itemValue=""></f:selectItem>
+		   					<f:selectItems value="#{tipoContaBean.tipos}" var="tipo" itemLabel="#{tipo.valor}" itemValue="#{tipo}"></f:selectItems>
+		   				</p:selectOneMenu>
+		   				
+		            </h:panelGrid>
+		        </p:tab>		       
+		    </p:accordionPanel>
+		    
+		    
+		    <p:commandButton value="Cadastrar" actionListener="#{contaBean.cadastrar}" update="growl"  style="margin: auto;"/>
+		</h:form>		
+	</ui:define>
+	</ui:composition>
