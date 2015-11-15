@@ -1,0 +1,93 @@
+<ui:composition template="./WEB-INF/templates/template.xhtml "
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="conteudo">
+		<div  style="margin: auto; display: table;">
+			<p:graphicImage library="imagens" name="iconeLancamentos.png" width="200"/>
+		</div>
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+		    <p:accordionPanel>
+		        <p:tab title="Cliente/Fornecedor">
+		            <h:panelGrid columns="2" cellpadding="10">
+		                <h:outputLabel value="Pessoa" for="pessoa" />
+		   				<p:selectOneMenu id="pessoa" value="#{lancamentosBean.pessoa}" title="Seleciona a pessoa de lançamento">
+		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um cliente" itemValue=""></f:selectItem>
+		   					<f:selectItems value="#{pessoaBean.pessoas}" var="pessoa" itemLabel="#{pessoa.nomeRazao}" itemValue="#{pessoa}"></f:selectItems>
+		   				</p:selectOneMenu>
+		   				
+		   				<h:outputLabel value="Descrição" for="descricao" />
+		   				<p:inputText id="descricao" value="#{lancamentosBean.lancamento.descricao}" placeholder="Descrição do lançamento" required="true" requiredMessage="Descrição obrigatória"/>
+		   				
+		   				<h:outputLabel value="Valor" for="valor" />
+		   				<p:inputText id="valor" value="#{lancamentosBean.lancamento.valorLançado}" placeholder="Valor lançado" required="true" requiredMessage="Valor lançado obrigatório"/>
+		   				
+		   				<h:outputLabel value="Plano de Conta" for="plano" />
+		   				<p:selectOneMenu value="#{lancamentosBean.conta}" id="plano" required="true" requiredMessage="Por favor, informe a conta">
+		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione uma conta" itemValue=""></f:selectItem>
+		   					<f:selectItems value="#{contaBean.contas}" var="conta" itemLabel="#{conta.descricao}" itemValue="#{conta}"></f:selectItems>
+		   				</p:selectOneMenu>
+		   				
+		   				<h:outputLabel value="Data de lançamento" for="dataLancamento" />
+		   				<p:calendar id="dataLancamento" value="#{lancamentosBean.dataLancamento}">
+		   					<f:convertDateTime pattern="dd/MM/yyyy"/>
+		   				</p:calendar>
+		   				
+		   				<h:outputLabel value="Data de Baixa" for="dataBaixa" />
+		   				<p:calendar id="dataBaixa" value="#{lancamentosBean.dataBaixa}">
+		   					<f:convertDateTime pattern="dd/MM/yyyy"/>
+		   				</p:calendar>
+		   				
+		   				<h:outputLabel value="Status do Lançamento" for="statusLancamento" />
+		   				<p:selectOneMenu id="statusLancamento" value="#{lancamentosBean.status}" required="true" requiredMessage="Por favor, informe o status do lançamento">
+		   					<f:selectItem itemLabel="Selecione" itemDescription="Selecione um status" itemValue=""></f:selectItem>
+		   					<f:selectItems value="#{statusLancamentoBean.statusLancamentos}" var="status" itemLabel="#{status.descricao}" itemValue="#{status}"></f:selectItems>
+		   				</p:selectOneMenu>
+		   				
+		            </h:panelGrid>
+		        </p:tab>
+		       
+		    </p:accordionPanel>
+		    
+		    
+		    <p:commandButton value="Cadastrar" actionListener="#{lancamentosBean.cadastrar}" update="growl" />
+		</h:form>
+		<p:dialog header="Inserção de contatos" widgetVar="dlgContato" modal="true" height="300" width="500">  			
+    				
+   					<p:tab>
+	    				<p:panelGrid columns="2">
+	    				<h:form>
+	    					<p:growl id="mensagemContato"/>
+	    					<h:outputLabel value="Tipo Contato" for="tipoContato"/>
+	    					<p:selectOneMenu id="tipoContato" value="#{clienteBean.contato.tipo}" required="true" requiredMessage="Tipo de contato obrigatório">
+	    						<f:selectItem itemValue="null" itemLabel="Selecione"/>
+	    						<f:selectItems value="#{clienteBean.tiposContato}" var="tipo" itemValue="#{tipo}" itemLabel="#{tipo.descricao}"/>
+	    					</p:selectOneMenu>
+	    					
+	    					<h:outputLabel value="Contato" for="contato"/>
+	    					<p:inputText value="#{clienteBean.contato.valor}" required="true" requiredMessage="Contato obrigatório"/>
+	    					
+	    					<p:dataTable id="tabelaContatos" var="contato" value="#{clienteBean.contatos}" emptyMessage="Nenhum contato adicionado">
+				   					<f:facet name="header">Contatos</f:facet>
+								 
+								    <p:column headerText="Tipo">
+								        <h:outputText value="#{contato.tipo.descricao}" />
+								    </p:column>
+								 
+								    <p:column headerText="Valor">
+								        <h:outputText value="#{contato.valor}" />
+								    </p:column>
+								</p:dataTable>
+	    					
+	    					<p:commandButton value="Adicionar Contato" update="mensagemContato tabelaContatos" render="tabelaContatos"  action="#{clienteBean.adicionarContato}" />
+	    					</h:form>
+	    				</p:panelGrid>
+   					</p:tab>
+   				
+		</p:dialog> 
+		
+	</ui:define>
+	</ui:composition>

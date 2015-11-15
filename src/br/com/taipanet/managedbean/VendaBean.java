@@ -39,7 +39,7 @@ public class VendaBean implements Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Produto> getProdutos(){
+	public List<Venda> getVendas(){
 		return new DaoRepository().listar(Venda.class);
 	}
 }

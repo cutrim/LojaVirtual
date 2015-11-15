@@ -13,18 +13,18 @@ public class FormaPagamento implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
-	private long id;
+	private Long id;
 	private String descricao;
 	
 	public FormaPagamento() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -40,6 +40,35 @@ public class FormaPagamento implements Serializable{
 		return serialVersionUID;
 	}
 	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id==null)?0:id.hashCode());
+        return result;
+	}
 	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        FormaPagamento other = (FormaPagamento) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+	
+    @Override
+    public String toString() {
+        return "Classe [id=" + id + ", descricao=" + descricao + "]";
+    }
 	
 }

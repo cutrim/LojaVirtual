@@ -6,27 +6,32 @@ xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="conteudo">
 		<h:form>
-		    <p:dataTable style="margin-top: 20px;" var="produto" value="#{produtoBean.produtos}" rows="10"  emptyMessage="Nenhum produto cadastrado"
+		    <p:dataTable style="margin-top: 20px;" var="venda" value="#{vendaBean.vendas}" rows="10"  emptyMessage="Nenhuma venda cadastrado"
 		                         paginator="true"
 		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		                         rowsPerPageTemplate="5,10,15">
-		        <f:facet name="header">Produtos</f:facet>
+		        <f:facet name="header">Vendas</f:facet>
 		 
 		        <p:column headerText="Código">
-		            <h:outputText value="#{produto.codigo}" />
+		            <h:outputText value="#{venda.codigo}" />
 		        </p:column>
-		        <p:column headerText="Descrição">
-		            <h:outputText value="#{produto.descricao}" />
+		        <p:column headerText="Data da Venda">
+		            <h:outputText value="#{venda.data}" />
 		        </p:column>
 		        
-		        <p:column headerText="Valor">
-		            <h:outputText value="#{produto.valor}" >
-		            	<f:convertNumber locale="pt_BR" type="currency" />
-		            </h:outputText>
+		        <p:column headerText="Cliente">
+		            <h:outputText value="#{venda.pessoa.nome}" />
+		        </p:column>
+		        
+		        <p:column headerText="Vendedor">
+		            <h:outputText value="#{venda.usuario.nome}" />
+		        </p:column>
+		        
+		        <p:column headerText="Valor">		            
 		        </p:column>
 		        
 		    </p:dataTable>
-		    <p:commandButton value="Novo" action="formProdutos" />
+		    <p:commandButton value="Novo" action="formVendas" />
 		</h:form>
 		
 		
