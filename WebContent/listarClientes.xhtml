@@ -10,34 +10,28 @@ xmlns="http://www.w3.org/1999/xhtml"
 		                         paginator="true"
 		                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		                         rowsPerPageTemplate="5,10,15">
-		        <f:facet name="header">Clientes</f:facet>
-		        <p:column headerText="Id">
-		            <h:outputText value="#{cliente.id}" />
-		        </p:column>
-		 
-		        <p:column headerText="Nome">
+		        <f:facet name="header">Clientes</f:facet>		 
+		        <p:column headerText="Nome" filterBy="#{cliente.nomeRazao}" sortBy="#{cliente.nomeRazao}">
 		            <h:outputText value="#{cliente.nomeRazao}" />
 		        </p:column>
-		        <p:column headerText="CPF">
+		        <p:column headerText="CPF" filterBy="#{cliente.cpfCnpj}" style="width:170px; text-align:center;">
 		            <h:outputText value="#{cliente.cpfCnpj}" />
 		        </p:column>
 		        
-		        <p:column headerText="Sexo">
+		        <p:column headerText="Sexo" style="width:170px; text-align:center;">
 		            <h:outputText value="#{cliente.sexo.valor}" />
 		        </p:column>
 		        
-		        <p:column headerText="Cadastrado em">
+		        <p:column headerText="Cadastrado em"  style="width:170px; text-align:center;">
 		            <h:outputText value="#{cliente.dataCadastroString}"/>
 		        </p:column>
 		        
-		        <p:column headerText="Atualizado em">
+		        <p:column headerText="Atualizado em" sortBy="#{cliente.dataUltimaAlteracaoString}" style="width:170px; text-align:center;">
 		            <h:outputText value="#{cliente.dataUltimaAlteracaoString}" />
 		        </p:column>
 		 
-		        <p:column headerText="Opções">
-		            <p:graphicImage library="imagens" name="iconeEditar.png" width="30" style="margin-right: 5px;"/>
-		            <p:graphicImage library="imagens" name="iconeExcluir.png" width="30" style="margin-right: 5px;"/>
-		            <p:graphicImage library="imagens" name="iconeVisualizar.png" width="30" style="margin-right: 5px;"/>
+		        <p:column headerText="Opções" width="100px" style="width: 100px; text-align:center;">
+		            <p:commandButton value="Editar" action="#{clienteBean.detalharCliente(cliente)}" />
 		        </p:column>
 		    </p:dataTable>
 		    <p:commandButton value="Novo" action="formClientes" />

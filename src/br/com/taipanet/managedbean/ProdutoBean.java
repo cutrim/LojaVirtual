@@ -77,6 +77,10 @@ public class ProdutoBean implements Serializable{
 		return new DaoRepository().listar(Produto.class);
 	}
 	
+	public List<Produto> getProdutosEmEstoque(){
+		return new DaoRepository().listar(Produto.class);
+	}
+	
 	public void handleFileUpload(FileUploadEvent event) {
 		FacesMessage message;
 		try{

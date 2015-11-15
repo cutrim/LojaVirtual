@@ -3,8 +3,9 @@ package br.com.taipanet.managedbean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import br.com.taipanet.model.Contato;
 import br.com.taipanet.model.Endereco;
 import br.com.taipanet.model.Pessoa;
@@ -12,7 +13,7 @@ import br.com.taipanet.model.TipoContato;
 import br.com.taipanet.model.TipoLogradouro;
 import br.com.taipanet.repository.DaoRepository;
 
-@ManagedBean @ViewScoped
+@ManagedBean @SessionScoped
 public class PessoaBean implements Serializable{
 	/**
 	 * 

@@ -1,20 +1,17 @@
 package br.com.taipanet.managedbean;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.taipanet.model.Cliente;
 import br.com.taipanet.model.Contato;
+import br.com.taipanet.model.Pessoa;
 import br.com.taipanet.repository.DaoRepository;
 
-@ManagedBean
-public class ClienteBean extends PessoaBean implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@ManagedBean @SessionScoped
+public class ClienteBean extends PessoaBean{
 	Cliente cliente = new Cliente();
 	String message = "";
 	
@@ -38,12 +35,10 @@ public class ClienteBean extends PessoaBean implements Serializable{
 		this.message = message;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public String cadastrar(){
-		this.cliente.setDataCadastro(Calendar.getInstance());
+		
+		if (this.cliente.getId()==null)
+			this.cliente.setDataCadastro(Calendar.getInstance());
 		this.cliente.setDataUltimaAlteracao(Calendar.getInstance());
 		this.cliente.setEndereco(this.getEndereco());
 		this.cliente.setContatos(this.getContatos());
@@ -53,5 +48,13 @@ public class ClienteBean extends PessoaBean implements Serializable{
 		new DaoRepository().adiciona(this.cliente);
 		this.cliente=new Cliente();		
 		return "listarClientes.jsf";
+	}
+	
+	public String detalharCliente(Pessoa cliente){
+		this.cliente =(Cliente) cliente; 
+		super.setEndereco(cliente.getEndereco());
+		super.setContatos(cliente.getContatos());
+		System.out.println(this.cliente.getNomeRazao());
+		return "formClientes.jsf";
 	}
 }
