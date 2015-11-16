@@ -20,6 +20,10 @@ xmlns="http://www.w3.org/1999/xhtml"
 		            <h:outputText value="#{produto.descricao}" />
 		        </p:column>
 		        
+		         <p:column headerText="Quantidade em estoque">
+		            <h:outputText value="#{produto.estoque}" />
+		        </p:column>
+		        
 		        <p:column headerText="Valor">
 		            <h:outputText value="#{produto.valor}" >
 		            	<f:convertNumber locale="pt_BR" type="currency" />

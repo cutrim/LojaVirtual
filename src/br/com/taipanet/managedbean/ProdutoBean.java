@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -17,6 +18,7 @@ import org.primefaces.model.UploadedFile;
 
 import br.com.taipanet.model.Produto;
 import br.com.taipanet.repository.DaoRepository;
+import br.com.taipanet.repository.ItemProdutoRepository;
 
 @ManagedBean @SessionScoped
 public class ProdutoBean implements Serializable{
@@ -53,6 +55,8 @@ public class ProdutoBean implements Serializable{
 
 	public String adicionar(){
 		this.produto.setEstoque(0);
+		this.produto.setDataCadastro(Calendar.getInstance());
+		this.produto.setDataUltimaAlteracao(Calendar.getInstance());
 		new DaoRepository().adiciona(produto);
 		/*try{
 			File file = new File("C:/" + imagem.getFileName());  	
@@ -69,12 +73,19 @@ public class ProdutoBean implements Serializable{
 		this.produto = new Produto();
 		
 		    
-		return "listarProdutos.jsf";
+		return "/listarProdutos.jsf";
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Produto> getProdutos(){
-		return new DaoRepository().listar(Produto.class);
+		List<Produto> listaProdutos = new DaoRepository().listar(Produto.class);
+		
+		for (Produto p : listaProdutos){
+			int quantidade = new ItemProdutoRepository().quantidadeEmEstoque(p);
+			p.setEstoque(quantidade);			
+		}
+				
+		return listaProdutos;
 	}
 	
 	public List<Produto> getProdutosEmEstoque(){

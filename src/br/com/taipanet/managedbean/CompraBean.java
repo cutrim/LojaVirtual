@@ -54,8 +54,8 @@ public class CompraBean{
 			new DaoRepository().adiciona(itemGravado);
 		}
 		
-		this.itemProduto=null;
-		this.produto=null;
+		this.itemProduto = new ItemProduto();
+		this.produto = new Produto();
 		
 		FacesContext context = FacesContext.getCurrentInstance();        
         context.addMessage(null, new FacesMessage("Sucesso",  "Produto cadastrado com sucesso: " + message) );        

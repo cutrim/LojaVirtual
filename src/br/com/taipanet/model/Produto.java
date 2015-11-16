@@ -1,6 +1,7 @@
 package br.com.taipanet.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,8 @@ public class Produto implements Serializable{
 	private String descricao;
 	private String imagem;
 	private Double valor;
+	private Calendar dataCadastro;
+	private Calendar dataUltimaAlteracao;
 	@Transient
 	private int estoque;
 	
@@ -73,5 +76,23 @@ public class Produto implements Serializable{
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
+
+	public Calendar getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Calendar dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public Calendar getDataUltimaAlteracao() {
+		return dataUltimaAlteracao;
+	}
+
+	public void setDataUltimaAlteracao(Calendar dataUltimaAlteracao) {
+		this.dataUltimaAlteracao = dataUltimaAlteracao;
+	}
+	
+	
 	
 }

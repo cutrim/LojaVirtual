@@ -9,8 +9,11 @@ xmlns="http://www.w3.org/1999/xhtml"
 		
 		<h:form>
 			<p:growl id="growl" showDetail="true" sticky="true" />
+			
+		   	
 		    <p:accordionPanel>
 		        <p:tab title="Dados Pessoais">
+		        <p:growl id="messages" showDetail="true" sticky="true" />
 		            <h:panelGrid columns="2" cellpadding="10">
 		                <h:outputLabel value="Código" for="codigo" />
 		   				<p:inputMask mask="99999999999" id="codigo" value="#{produtoBean.produto.codigo}" placeholder="99999999999" required="true" requiredMessage="Código obrigatório"></p:inputMask>
@@ -18,11 +21,10 @@ xmlns="http://www.w3.org/1999/xhtml"
 		   				<h:outputLabel value="Nome do produto" for="descricao" />
 		   				<p:inputText id="descricao" value="#{produtoBean.produto.descricao}" placeholder="Nome do produto" required="true" requiredMessage="Nome do produto obrigatório"/>
 		   				
+		   				
 		   				<h:outputLabel value="Imagem do produto" for="imagem" />
 		   				<p:fileUpload id="imagem" fileUploadListener="#{produtoBean.handleFileUpload}" mode="advanced" dragDropSupport="false" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-		   				
-		   				<p:growl id="messages" showDetail="true" sticky="true" />
-		   				
+		   						   				
 		   				<h:outputLabel value="Valor" for="valor" />
 		   				<p:inputText id="valor" value="#{produtoBean.produto.valor}" />
 		   				
